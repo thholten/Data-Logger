@@ -1,11 +1,10 @@
 package sensorplot;
 
-import websockets.DataSocketServer;
 
+// creates new data threads using specified parameters (defined as needed in subclasses)
 public abstract class DataThreadFactory {
 
 	String[] objectNames;
-	DataSocketServer dataStream;
 
 	public DataThreadFactory() {
 

@@ -1,10 +1,11 @@
 package sensorplot;
 
+
+//Thread that gets data from the specified sources (runs methods in updateDataSources()) and terminates
 public abstract class DataThreadDouble extends DataThread {
 
 	protected double[] dataSources;
 	private String name;
-	private TimeThread timeThread;
 	private boolean running;
 	
 
@@ -33,9 +34,6 @@ public abstract class DataThreadDouble extends DataThread {
 	
 	public abstract DataThreadFactory getDataType();
 
-	public TimeThread getTimeThread() {
-		return timeThread;
-	}
 
 	public void setRunning(boolean running) {
 		this.running = running;

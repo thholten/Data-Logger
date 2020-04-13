@@ -15,14 +15,20 @@ public class LiveGraph extends Graph {
 		this.tick = tick;
 
 		ValueAxis domainAxis = chart.getXYPlot().getDomainAxis();
+		
+		//allows setting of domain manually for live data stream
+		//TODO: add an option to keep whole domain on screen
 		domainAxis.setAutoRange(false);
+		
 		domainAxis.setRange(0, domainLength);
 	}
 
+	//add data point to graph
 	public void populate(int seriesNumber, double x, double y) {
 		dataset.getSeries(seriesNumber).add(this.x, y);
 	}
 
+	//move domain over if data is added outside of current domain
 	public void updateDomain(double x) {
 		double prevX = this.x;
 		setX(x);
@@ -45,11 +51,7 @@ public class LiveGraph extends Graph {
 	public void setX(double x) {
 		this.x = x;
 	}
-
-	public double updateX() {
-		x += tick / 1000.0; // tick in milliseconds
-		return x;
-	}
+	
 	
 	public String toString() {
 		return this.chart.getTitle().getText();

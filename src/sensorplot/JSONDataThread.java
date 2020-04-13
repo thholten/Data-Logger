@@ -23,6 +23,7 @@ public class JSONDataThread extends DataThreadDouble {
 	public void updateDataSources() {
 		for (int i = 0; i < objectNames.length; i++) {
 			try {
+				//get data from JSON stream
 				dataSources[i] = dataStream.getObject().get(objectNames[i]).getAsDouble();
 			} catch (Exception e) {
 				System.out.println("No data");

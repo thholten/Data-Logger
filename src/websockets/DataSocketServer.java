@@ -27,11 +27,15 @@ public class DataSocketServer extends Thread {
 			System.out.println("Client Found");
 			JsonStreamParser reader = new JsonStreamParser(new InputStreamReader(client.getInputStream()));
 			while (client.isConnected()) {
+				
+				//wait until the reader has data
 				while (!reader.hasNext()) {
 					
 					}
 				if (reader.hasNext()) {
 					this.object = (JsonObject) reader.next();
+					
+					//tell main thread to proceed once server is getting data
 					synchronized (lock) {
 						lock.notify();
 					}
